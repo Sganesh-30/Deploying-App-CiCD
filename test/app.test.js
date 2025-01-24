@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../app');
+const app = require('../app'); // Import the app instance
 
 describe('GET /', function() {
   it('responds with Welcome to the Game!', function(done) {
