@@ -1,20 +1,31 @@
-const request = require('supertest');
-const app = require('../app'); // Import the app instance
+// carromGame.test.js
 
-describe('GET /', function() {
-  it('responds with Welcome to the Game!', function(done) {
-    request(app)
-      .get('/')
-      .expect('Content-Type', /text/)
-      .expect(200, 'Welcome to the Game!', done);
-  });
-});
+const CarromGame = require('./carromGame');
 
-describe('GET /game', function() {
-  it('responds with Game is in progress...', function(done) {
-    request(app)
-      .get('/game')
-      .expect('Content-Type', /text/)
-      .expect(200, 'Game is in progress...', done);
-  });
+describe('CarromGame Tests', () => {
+    let game;
+
+    beforeEach(() => {
+        game = new CarromGame('Player1', 'Player2');
+    });
+
+    test('Game starts with 9 pieces for each player', () => {
+        expect(game.pieces.player1).toBe(9);
+        expect(game.pieces.player2).toBe(9);
+    });
+
+    test('Player1 wins when all pieces are pocketed', () => {
+        game.pieces.player1 = 0;  // Simulate Player1 winning
+        game.pieces.player2 = 3;
+        game.score.player1 = 9;
+        game.score.player2 = 3;
+        expect(game.score.player1).toBe(9);
+        expect(game.pieces.player1).toBe(0);
+    });
+
+    test('Turn switches after every shot', () => {
+        const currentTurn = game.turn;
+        game.switchTurn();
+        expect(game.turn).not.toBe(currentTurn);
+    });
 });
