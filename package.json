@@ -1,21 +1,17 @@
 {
-    "name": "gaming-app",
+    "name": "carrom-game",
     "version": "1.0.0",
-    "description": "A simple gaming backend",
-    "main": "app.js",
+    "description": "A simple Carrom game",
+    "main": "carromGame.js",
     "scripts": {
-        "start": "node app.js",
-        "test": "npx mocha test/**/*.test.js"
+      "start": "node carromGame.js",
+      "test": "jest"
     },
     "dependencies": {
-        "express": "^4.17.1"
+      "jest": "^29.0.3"
     },
-    "devDependencies": {
-        "supertest": "^7.0.0"
-    },
-    "engines": {
-        "node": "14.x"
-    },
-    "author": "Ganesh S",
+    "devDependencies": {},
+    "author": "Ganesh",
     "license": "MIT"
-}
+  }
+  
