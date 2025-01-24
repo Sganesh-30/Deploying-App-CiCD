@@ -13,3 +13,5 @@ app.get('/game', (req, res) => {
 app.listen(port, () => {
   console.log(`Game app listening at http://localhost:${port}`);
 });
+
+module.exports = app; // Export the app instance for testing

@@ -4,17 +4,18 @@
     "description": "A simple gaming backend",
     "main": "app.js",
     "scripts": {
-      "start": "node app.js",
-      "test": "npx mocha test/**/*.test.js"
+        "start": "node app.js",
+        "test": "npx mocha test/**/*.test.js"
     },
     "dependencies": {
-      "express": "^4.17.1"
+        "express": "^4.17.1"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "supertest": "^7.0.0"
+    },
     "engines": {
-      "node": "14.x"
+        "node": "14.x"
     },
     "author": "Ganesh S",
     "license": "MIT"
-  }
-  
+}
