@@ -1,6 +1,6 @@
 // carromGame.test.js
 
-const CarromGame = require('./carromGame');
+const CarromGame = require('../carromGame');
 
 describe('CarromGame Tests', () => {
     let game;
