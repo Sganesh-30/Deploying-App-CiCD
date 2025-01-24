@@ -1,5 +1,3 @@
-// carromGame.test.js
-
 const CarromGame = require('../carromGame');
 
 describe('CarromGame Tests', () => {
@@ -19,7 +17,7 @@ describe('CarromGame Tests', () => {
         while (game.pieces.player1 > 0) {
             game.handleShot(); // Simulate Player1 making a shot
         }
-        
+
         // Ensure Player1 wins
         expect(game.pieces.player1).toBe(0);
         expect(game.score.player1).toBe(9);  // Assuming Player1 pockets all pieces
@@ -27,7 +25,16 @@ describe('CarromGame Tests', () => {
 
     test('Turn switches after every shot', () => {
         const currentTurn = game.turn;
-        game.switchTurn();
+        game.switchTurn(); // This now runs synchronously
         expect(game.turn).not.toBe(currentTurn);
+    });
+
+    // Mock console.log to suppress output during tests
+    beforeAll(() => {
+        console.log = jest.fn();
+    });
+
+    afterAll(() => {
+        console.log.mockRestore();
     });
 });
