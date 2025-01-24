@@ -5,6 +5,7 @@ describe('CarromGame Tests', () => {
 
     beforeEach(() => {
         game = new CarromGame('Player1', 'Player2');
+        game.setTestMode(true); // Disable automatic recursion during tests
     });
 
     test('Game starts with 9 pieces for each player', () => {

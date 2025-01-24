@@ -4,6 +4,7 @@ class CarromGame {
         this.turn = 0; // 0 for player1's turn, 1 for player2's turn
         this.pieces = { player1: 9, player2: 9, queen: 1 }; // Pieces of players and queen
         this.score = { player1: 0, player2: 0 };
+        this.isTestMode = false; // Flag to control recursion in tests
     }
 
     // Start the game
@@ -22,7 +23,11 @@ class CarromGame {
         } else {
             console.log('Shot missed!');
         }
-        this.switchTurn();
+        
+        // If it's not in test mode, switch turns automatically
+        if (!this.isTestMode) {
+            this.switchTurn();
+        }
     }
 
     // Handle a successful shot
@@ -50,8 +55,14 @@ class CarromGame {
     // Switch turn between players
     switchTurn() {
         this.turn = this.turn === 0 ? 1 : 0;
-        // Simulate a delay without causing issues in tests
-        this.playTurn();  // Continue immediately for the next turn
+        if (!this.isTestMode) {
+            setTimeout(() => this.playTurn(), 1000);
+        }
+    }
+
+    // Enable or disable test mode
+    setTestMode(isTestMode) {
+        this.isTestMode = isTestMode;
     }
 }
 
